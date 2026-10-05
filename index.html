@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Match2Deal | Find Your Best Deal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Match<span>2Deal</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#post">Post Need</a>
+        <a href="#offers">Offers</a>
+        <a href="#features">Features</a>
+
+        <button
+            class="login-btn"
+            onclick="showToast('Authentication coming next 🚀')">
+            Login
+        </button>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🤖 AI-POWERED DEAL MATCHING
+        </div>
+
+        <h1>
+            You Need It.<br>
+            <span>They Compete.</span><br>
+            You Get The Best Deal.
+        </h1>
+
+        <p>
+            Post your requirement once. Providers compete with
+            personalized offers while Match2Deal AI finds your
+            best match.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="scrollToPost()">
+                Post Your Need →
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="loadDemo()">
+                ✨ Load Demo
+            </button>
+
+        </div>
+
+        <div class="stats">
+
+            <div>
+                <strong>🎯</strong>
+                <small>Smart Matching</small>
+            </div>
+
+            <div>
+                <strong>💰</strong>
+                <small>Better Deals</small>
+            </div>
+
+            <div>
+                <strong>🛡️</strong>
+                <small>Trusted Providers</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="card-header">
+
+            <span>
+                ✨ Quick AI Analyzer
+            </span>
+
+            <span class="online">
+                ● LIVE
+            </span>
+
+        </div>
+
+        <textarea
+            id="quickRequirement"
+            placeholder="Example: Need a laptop for coding under ₹60000 within 3 days">
+        </textarea>
+
+        <button onclick="quickAnalyze()">
+            Analyze With Match2Deal AI
+        </button>
+
+        <div
+            id="quickResult"
+            class="ai-result hidden">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- POST REQUIREMENT -->
+
+<section
+    id="post"
+    class="section">
+
+    <div class="section-title">
+
+        <span>01</span>
+
+        <h2>
+            Post Your Requirement
+        </h2>
+
+        <p>
+            Tell providers exactly what you need.
+        </p>
+
+    </div>
+
+
+    <div class="requirement-box">
+
+        <div class="form-grid">
+
+            <div class="full">
+
+                <label>
+                    Requirement Title
+                </label>
+
+                <input
+                    id="reqTitle"
+                    placeholder="Example: Need a coding laptop">
+
+            </div>
+
+
+            <div class="full">
+
+                <label>
+                    What exactly do you need?
+                </label>
+
+                <textarea
+                    id="reqDescription"
+                    placeholder="Describe your requirement...">
+                </textarea>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Category
+                </label>
+
+                <select id="reqCategory">
+
+                    <option>
+                        Electronics
+                    </option>
+
+                    <option>
+                        Services
+                    </option>
+
+                    <option>
+                        Education
+                    </option>
+
+                    <option>
+                        Travel
+                    </option>
+
+                    <option>
+                        Home Services
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Maximum Budget
+                </label>
+
+                <input
+                    id="reqBudget"
+                    type="number"
+                    placeholder="60000">
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Required By
+                </label>
+
+                <input
+                    id="reqDeadline"
+                    type="date">
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn full-btn"
+            onclick="createRequirement()">
+
+            🚀 Publish Requirement
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ACTIVE REQUIREMENT -->
+
+<section class="section dashboard-section">
+
+    <div class="section-title">
+
+        <span>02</span>
+
+        <h2>
+            Your Active Requirement
+        </h2>
+
+    </div>
+
+
+    <div
+        id="activeRequirement"
+        class="empty-state">
+
+        No requirement posted yet.
+
+    </div>
+
+</section>
+
+
+<!-- PROVIDER -->
+
+<section
+    id="provider"
+    class="section">
+
+    <div class="section-title">
+
+        <span>03</span>
+
+        <h2>
+            Provider Dashboard
+        </h2>
+
+        <p>
+            Providers can compete by submitting their best offers.
+        </p>
+
+    </div>
+
+
+    <div class="provider-box">
+
+        <div class="form-grid">
+
+            <div>
+
+                <label>
+                    Provider Name
+                </label>
+
+                <input
+                    id="providerName"
+                    placeholder="TechWorld">
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Your Price
+                </label>
+
+                <input
+                    id="offerPrice"
+                    type="number"
+                    placeholder="58000">
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Delivery Time
+                </label>
+
+                <input
+                    id="deliveryDays"
+                    type="number"
+                    placeholder="2">
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Offer Description
+                </label>
+
+                <input
+                    id="offerDescription"
+                    placeholder="Laptop + warranty + free delivery">
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn full-btn"
+            onclick="submitOffer()">
+
+            💼 Submit Provider Offer
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- OFFERS -->
+
+<section
+    id="offers"
+    class="section">
+
+    <div class="section-title">
+
+        <span>04</span>
+
+        <h2>
+            AI Offer Comparison
+        </h2>
+
+        <p>
+            Match2Deal AI ranks offers based on price, delivery,
+            trust and relevance.
+        </p>
+
+    </div>
+
+
+    <div
+        id="offerStats"
+        class="offer-stats hidden">
+    </div>
+
+
+    <div
+        id="offersContainer"
+        class="offers-container">
+
+        <div class="empty-state">
+            Post a requirement and providers will appear here.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section
+    id="features"
+    class="section">
+
+    <div class="section-title center">
+
+        <span>05</span>
+
+        <h2>
+            Match2Deal Intelligence
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="icon">🧠</div>
+
+            <h3>
+                AI Requirement Understanding
+            </h3>
+
+            <p>
+                Understands what users actually need,
+                not just keywords.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="icon">🎯</div>
+
+            <h3>
+                Match Score
+            </h3>
+
+            <p>
+                Every provider gets a compatibility score.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="icon">💰</div>
+
+            <h3>
+                Deal Intelligence
+            </h3>
+
+            <p>
+                Find the best price without sacrificing requirements.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="icon">🤝</div>
+
+            <h3>
+                AI Negotiation
+            </h3>
+
+            <p>
+                Get smarter negotiation suggestions before selecting.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="logo">
+        Match<span>2Deal</span>
+    </div>
+
+    <p>
+        You post. They offer. AI finds your best deal.
+    </p>
+
+    <small>
+        © 2026 Match2Deal
+    </small>
+
+</footer>
+
+
+<div id="toast"></div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
